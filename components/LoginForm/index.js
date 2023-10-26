@@ -12,7 +12,7 @@ export default function LoginForm() {
     return (
         <form onSubmit={handler}>
           <div>
-            <label htmlFor="email">Email:</label>
+            <label htmlFor="email">email:</label>
             <input
               type="email"
               id="email"
@@ -22,7 +22,7 @@ export default function LoginForm() {
             />
           </div>
           <div>
-            <label htmlFor="password">Password:</label>
+            <label htmlFor="password">password:</label>
             <input
               type="password"
               id="password"
@@ -31,7 +31,7 @@ export default function LoginForm() {
               required
             />
           </div>
-          <button type="submit">Login</button>
+          <button type="submit">login</button>
         </form>
       );
     };
