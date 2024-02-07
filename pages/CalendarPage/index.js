@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import Calendar from '../../components/Calendar';
+import Calendar from "../../components/Calendar";
+
 
 // import dayGridPlugin from '@fullcalendar/daygrid';
 
@@ -28,11 +29,17 @@ export default function CalendarPage() {
       const formData = new FormData();
       formData.append("start", timeSpan.start.toISOString());
       formData.append("end", timeSpan.end.toISOString());
+      //TODO: User, type anhängen und in neuer Prisma Tabelle speichern
+      //formData.append("type", )
 
       const response = await fetch("/api/calendarSelect", {
         method: "POST",
         body: formData,
       });
+
+      if (!response.ok) {
+        throw new Error("failed to submit data. pls try again")
+      } 
     }
   };
 
@@ -73,6 +80,7 @@ export default function CalendarPage() {
       </div>
 
       <Calendar onSelect={onSelect} />
+      
       <button onClick={onSubmit}>Abschicken</button>
     </>
   );

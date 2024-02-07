@@ -1,4 +1,8 @@
-const { PrismaClient } = require('@prisma/client')
+import { PrismaClient } from '@prisma/client'
+import { hash } from 'bcrypt'
+
+
+
 
 const prisma = new PrismaClient()
 
@@ -19,6 +23,7 @@ const userData = [
   async function main() {
     console.log(`Start seeding ...`)
     for (const u of userData) {
+      const password = await hash('test', 12)
       const user = await prisma.user.create({
         data: u,
       })

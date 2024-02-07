@@ -13,6 +13,20 @@ datasource db {
 model User {
   id    Int    @id @default(autoincrement())
   email String @unique
-  userName String @unique
   password String @unique
+  userName String @unique
+  createdAt DateTime @default(now())
+  timespans Timespan[]
+  
+}
+
+model Timespan {
+  id Int @id @default(autoincrement())
+  start DateTime
+  end DateTime
+  type Int
+  renter User @relation(fields: [renterId], references: [id]) 
+  renterId Int
+  createdAt DateTime @default(now())
+
 }
